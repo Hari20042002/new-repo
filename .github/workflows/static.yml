@@ -24,6 +24,6 @@ jobs:
           SOURCE_PATH="${{ secrets.SOURCE_PATH }}"
           DESTINATION_PATH="${{ secrets.DESTINATION_PATH }}"
           mkdir -p "$DESTINATION_PATH"
-          cp "$SOURCE_PATH" "$DESTINATION_PATH"
+          cp -r "$SOURCE_PATH"/* "$DESTINATION_PATH"  
 
          
