@@ -20,6 +20,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         key: ${{ secrets.SSH_KEY }}
+        sshkey: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SERVER_PORT }}
         script: |
           SOURCE_PATH="${{ secrets.SOURCE_PATH }}"
