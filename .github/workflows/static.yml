@@ -13,10 +13,6 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Build HTML
-      run: |
-        new-repo/index.html
-
     - name: Deploy to Server
       uses: appleboy/ssh-action@master
       with:
@@ -25,5 +21,6 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.SERVER_PORT }}
         script: |
-          # Copy the built HTML files to the server
-          scp -r _site/* ${{ secrets.SERVER_DESTINATION_PATH }}
+            src/github.com/Hari20042002/new-repo/index.html
+            dist/home/ubuntu/ait
+         
