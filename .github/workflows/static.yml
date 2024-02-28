@@ -21,6 +21,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.SERVER_PORT }}
         script: |
-            src/github.com/Hari20042002/new-repo/index.html
-            dist/home/ubuntu/ait
+          SOURCE_PATH: ${{ secrets.SOURCE_PATH }}
+          DESTINATION_PATH: ${{ secrets.DESTINATION_PATH }}
+
          
