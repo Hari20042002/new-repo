@@ -2,9 +2,9 @@ name: HTML Build and Deploy
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "static" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "static" ]
 jobs:
   build:
     runs-on: ubuntu-latest
