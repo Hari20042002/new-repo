@@ -1,0 +1,28 @@
+name: HTML Build and Deploy
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Build HTML
+      run: |
+        new-repo/index.html
+
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.SERVER_PORT }}
+        script: |
+          # Copy the built HTML files to the server
+          scp -r _site/* ${{ secrets.SERVER_DESTINATION_PATH }}
