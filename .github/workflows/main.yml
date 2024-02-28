@@ -25,4 +25,4 @@ jobs:
         port: ${{ secrets.SERVER_PORT }}
         script: |
           # Copy the built HTML files to the server
-          scp -r _site/* ${{ secrets.SERVER_DESTINATION_PATH }}
+          scp -r _new-repo/* ${{ secrets.SERVER_DESTINATION_PATH }}
