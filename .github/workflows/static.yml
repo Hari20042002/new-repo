@@ -10,20 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Deploy to Server
-      uses: appleboy/ssh-action@master
+    - name: Download HTML file
+      uses: actions/http-client@v1
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.SERVER_PORT }}
-        script: |
-          SOURCE_PATH="${{ secrets.SOURCE_PATH }}"
-          DESTINATION_PATH="${{ secrets.DESTINATION_PATH }}"
-          mkdir -p "$DESTINATION_PATH"
-          cp -r "$SOURCE_PATH"/* "$DESTINATION_PATH"  
+        url: 'https://raw.githubusercontent.com/Hari20042002/new-repo/main/index.html'
+        dest: 'index.html'
 
+    - name: Transfer HTML file to server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        source: "index.html"
+        target: "/home/ubuntu/Github"
          
