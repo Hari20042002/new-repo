@@ -16,6 +16,10 @@ jobs:
     - name: Download HTML file
       run: |
         curl -o index.html https://raw.githubusercontent.com/Hari20042002/new-repo/main/index.html
+        
+    - name: Download Text file
+      run: |
+        curl -o text_file.txt https://raw.githubusercontent.com/Hari20042002/new-repo/main/text_file.txt
 
     - name: Transfer HTML file to server
       uses: appleboy/scp-action@master
@@ -25,6 +29,6 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         key: ${{ secrets.SERVER_SSH_KEY }}
-        source: "index.html"
+        source: "index.html text_file.txt"
         target: "/home/ubuntu/Github"
          
